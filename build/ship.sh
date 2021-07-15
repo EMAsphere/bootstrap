@@ -25,12 +25,6 @@ if [[ $# -lt 1 ]]; then
   exit 1
 fi
 
-# Pulling latest changes, just to be sure
-printf "\n%s=======================================================%s" "$magenta" "$end"
-printf "\n%sPulling latest changes...%s" "$magenta" "$end"
-printf "\n%s=======================================================\n\n%s" "$magenta" "$end"
-git pull origin v4-dev
-
 # Update version number
 printf "\n%s=======================================================%s" "$magenta" "$end"
 printf "\n%sUpdating version number...%s" "$magenta" "$end"
@@ -42,13 +36,6 @@ printf "\n%s=======================================================%s" "$magenta
 printf "\n%sBuilding release...%s" "$magenta" "$end"
 printf "\n%s=======================================================\n%s" "$magenta" "$end"
 npm run release
-
-# Copy the contents of the built docs site over to `bs-docs` repo
-printf "\n%s=======================================================%s" "$magenta" "$end"
-printf "\n%sCopy it over...%s" "$magenta" "$end"
-printf "\n%s=======================================================\n%s" "$magenta" "$end"
-cp -rf _gh_pages/. ../bs-docs/
-printf "\nDone!\n"
 
 printf "\n%s=======================================================%s" "$green" "$end"
 printf "\n%sSuccess, $1 is ready to review and publish.%s" "$green" "$end"
